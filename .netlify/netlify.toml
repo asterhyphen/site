@@ -6,7 +6,7 @@ headers = []
 [functions."*"]
 
 [build]
-publish = "/Users/aster/Desktop/Site-Rewrite/dist"
+publish = "/Users/aster/Desktop/site/dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "npm run build"

@@ -12,11 +12,11 @@ export const about = [
 
 export const projects = [
   { label: "Adhkar", href: "https://adhkar.asterhyphen.xyz/" },
-  { label: "Hisaab", href: "https://github.com/ahmedsiddiqua/hisaab" },
-  { label: "In-Campus Queue System", href: "https://github.com/ahmedsiddiqua/campus-queue-priority" },
+  { label: "CTFriend", href: "/ctf/" },
   { label: "Faculty Availability Checker", href: "https://github.com/ahmedsiddiqua/faculty-availability" },
   { label: "File Sorter According to Date", href: "https://github.com/ahmedsiddiqua/sort" },
-  { label: "CTFriend", href: "/ctf/index.html" },
+  { label: "Hisaab", href: "https://github.com/ahmedsiddiqua/hisaab" },
+  { label: "In-Campus Queue System", href: "https://github.com/ahmedsiddiqua/campus-queue-priority" },
 ];
 
 export const socials = [
