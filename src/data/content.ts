@@ -17,6 +17,8 @@ export const projects = [
   { label: "File Sorter According to Date", href: "https://github.com/ahmedsiddiqua/sort" },
   { label: "Hisaab", href: "https://github.com/ahmedsiddiqua/hisaab" },
   { label: "In-Campus Queue System", href: "https://github.com/ahmedsiddiqua/campus-queue-priority" },
+  { label: "Rent Track-Kar", href: "https://github.com/ahmedsiddiqua/rent-track-kar"},
+  { label: "Geo-Tag Camera", href: "https://github.com/ahmedsiddiqua/geotag-camera"}
 ];
 
 export const socials = [
