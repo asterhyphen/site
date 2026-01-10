@@ -13,16 +13,16 @@ export const about = [
 export const projects = [
   { label: "Adhkar", href: "https://adhkar.asterhyphen.xyz/" },
   { label: "CTFriend", href: "/ctf/" },
-  { label: "Faculty Availability Checker", href: "https://github.com/ahmedsiddiqua/faculty-availability" },
-  { label: "File Sorter According to Date", href: "https://github.com/ahmedsiddiqua/sort" },
-  { label: "Hisaab", href: "https://github.com/ahmedsiddiqua/hisaab" },
-  { label: "In-Campus Queue System", href: "https://github.com/ahmedsiddiqua/campus-queue-priority" },
-  { label: "Rent Track-Kar", href: "https://github.com/ahmedsiddiqua/rent-track-kar"},
-  { label: "Geo-Tag Camera", href: "https://github.com/ahmedsiddiqua/geotag-camera"}
+  { label: "Faculty Availability Checker", href: "https://github.com/asterhyphen/faculty-availability" },
+  { label: "File Sorter According to Date", href: "https://github.com/asterhyphen/sort" },
+  { label: "Hisaab", href: "https://github.com/asterhyphen/hisaab" },
+  { label: "In-Campus Queue System", href: "https://github.com/asterhyphen/campus-queue-priority" },
+  { label: "Rent Track-Kar", href: "https://github.com/asterhyphen/rent-track-kar"},
+  { label: "Geo-Tag Camera", href: "https://github.com/asterhyphen/geotag-camera"}
 ];
 
 export const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmed-s-284bb7359" },
-  { label: "Github", href: "https://github.com/ahmedsiddiqua" },
+  { label: "Github", href: "https://github.com/asterhyphen" },
   { label: "Instagram", href: "https://www.instagram.com/aster.hyphen/" },
 ];
