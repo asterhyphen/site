@@ -1,9 +1,10 @@
 export const intro = [
-  { text: "Welcome to Ahmed's portfolio", highlight: true },
+  { text: "Connected to Ahmed's portfolio", highlight: true },
 ];
 
 export const about = [
   "I'm Ahmed.-",
+  "Sophomore pursuing Information Science and Engineering",
   "Bugs > Features",
   "Poems > Assignments",
   "Pani Puri > Health",

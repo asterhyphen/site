@@ -372,22 +372,6 @@ textarea {
   max-width: 900px;
 }
 
-.App {
-  font-family: "NTR";
-  background-color: var(--navy);
-  display: flex;
-  margin: auto;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-a {
-  text-decoration: none !important;
-  color: var(--green-bright) !important;
-}
 
 #content {
   width: 100vw;
@@ -401,12 +385,6 @@ a {
 
 ::selection {
   background: var(--lightest-navy);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -429,36 +407,6 @@ a {
   margin-top: 39px;
   height: 1px;
   margin-left: 20px;
-  background-color: var(--lightest-navy);
 }
 
-.section-title {
-  font-family: "NTR", sans-serif;
-  color: var(--lightest-slate);
-  font-size: 46px;
-  font-weight: bold;
-}
 
-@media only screen and (max-width: 600px) {
-  .App {
-    flex-direction: column;
-    padding: 0px 24px;
-  }
-
-  #content {
-    padding: 10px 10px;
-    width: 100%;
-  }
-
-  .section-header {
-    width: unset;
-  }
-
-  .section-header::after {
-    display: none;
-  }
-
-  .section-title {
-    font-size: 32px;
-  }
-}
