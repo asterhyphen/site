@@ -37,7 +37,7 @@ export default function Terminal() {
 
       <footer className="footer">
         <p className="line dim">
-          # Made with ❤️ by Aster. | ahmed@asterhyphen.xyz -
+          # Made with ❤️ by Ahmed | ahmed@asterhyphen.xyz -
         </p>
       </footer>
     </div>
