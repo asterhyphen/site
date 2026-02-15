@@ -19,7 +19,8 @@ export const projects = [
   { label: "Hisaab", href: "https://github.com/asterhyphen/hisaab" },
   { label: "In-Campus Queue System", href: "https://github.com/asterhyphen/campus-queue-priority" },
   { label: "Rent Track-Kar", href: "https://github.com/asterhyphen/rent-track-kar"},
-  { label: "Geo-Tag Camera", href: "https://github.com/asterhyphen/geotag-camera"}
+  { label: "Geo-Tag Camera", href: "https://github.com/asterhyphen/geotag-camera"},
+  { label: "Migraine Tracker", href: "https://github.com/asterhyphen/migraine-tracker"},
 ];
 
 export const socials = [
