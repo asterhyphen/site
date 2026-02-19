@@ -371,6 +371,18 @@ textarea {
   gap: 16px;
 }
 
+.project-group + .project-group {
+  margin-top: 24px;
+}
+
+.project-group-title {
+  margin: 0 0 12px;
+  color: #ffff00;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
 .project-item {
   display: flex;
   gap: 14px;
