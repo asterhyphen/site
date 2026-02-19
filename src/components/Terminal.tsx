@@ -1,4 +1,4 @@
-import { intro, about, projects, socials } from "../data/content";
+import { intro, about, socials, homeLinks } from "../data/content";
 import TerminalHeader from "./TerminalHeader";
 import Section from "./Section";
 import Line from "./Line";
@@ -23,9 +23,9 @@ export default function Terminal() {
         ))}
       </Section>
 
-      <Section index={2} title="projects">
-        {projects.map((p, i) => (
-          <LinkLine key={i} label={p.label} href={p.href} />
+      <Section index={2} title="navigation">
+        {homeLinks.map((item, i) => (
+          <LinkLine key={i} label={item.label} href={item.href} />
         ))}
       </Section>
 

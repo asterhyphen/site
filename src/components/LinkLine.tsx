@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function LinkLine({
   label,
   href,
@@ -5,12 +7,18 @@ export default function LinkLine({
   label: string;
   href: string;
 }) {
+  const isExternal = /^https?:\/\//.test(href);
+
   return (
     <p className="line">
       ▶{" "}
-      <a href={href} target="_blank" rel="noopener">
-        {label}
-      </a>
+      {isExternal ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      ) : (
+        <Link to={href}>{label}</Link>
+      )}
     </p>
   );
 }
