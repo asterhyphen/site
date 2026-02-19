@@ -3,7 +3,14 @@ import TerminalHeader from "./TerminalHeader";
 import Section from "./Section";
 import Line from "./Line";
 
-function SocialIcon({ type }: { type: "linkedin" | "github" | "instagram" }) {
+function decodeEntities(value: string) {
+  return value
+    .replace(/&#58;/g, ":")
+    .replace(/&#64;/g, "@")
+    .replace(/&#46;/g, ".");
+}
+
+function SocialIcon({ type }: { type: "linkedin" | "github" | "instagram" | "email" }) {
   if (type === "linkedin") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -27,6 +34,17 @@ function SocialIcon({ type }: { type: "linkedin" | "github" | "instagram" }) {
           fill="currentColor"
         />
         <circle cx="16.9" cy="7.2" r="1" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  if (type === "email") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M3.5 6.5h17A1.5 1.5 0 0 1 22 8v8a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 16V8a1.5 1.5 0 0 1 1.5-1.5Zm0 1.8v.3l8.5 5.2 8.5-5.2v-.3h-17Zm17 7.4V10l-8.1 5a.7.7 0 0 1-.8 0l-8.1-5v5.7h17Z"
+          fill="currentColor"
+        />
       </svg>
     );
   }
@@ -64,11 +82,11 @@ export default function Terminal() {
           <a
             key={i}
             className="social-icon-link"
-            href={s.href}
+            href={decodeEntities(s.href)}
             aria-label={s.label}
             title={s.label}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={s.icon === "email" ? undefined : "_blank"}
+            rel={s.icon === "email" ? undefined : "noopener noreferrer"}
           >
             <SocialIcon type={s.icon} />
           </a>
@@ -78,7 +96,7 @@ export default function Terminal() {
 
       <footer className="footer">
         <p className="line dim">
-          # Made with ❤️ by Ahmed | ahmed@asterhyphen.xyz -
+          # Made with ❤️ by Ahmed.-
         </p>
       </footer>
     </div>

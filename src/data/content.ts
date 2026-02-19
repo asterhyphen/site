@@ -6,7 +6,7 @@ export type LinkItem = {
 };
 
 export type SocialItem = LinkItem & {
-  icon: "linkedin" | "github" | "instagram";
+  icon: "linkedin" | "github" | "instagram" | "email";
 };
 
 export type ProjectItem = LinkItem & {
@@ -105,4 +105,14 @@ export const socials: SocialItem[] = [
     href: "https://www.instagram.com/aster.hyphen/",
     icon: "instagram",
   },
+  {
+    label: "Email",
+    href: "mailto&#58;ahmed&#64;asterhyphen&#46;xyz",
+    icon: "email",
+  },
 ];
+
+export const emailEntities = {
+  href: "mailto&#58;ahmed&#64;asterhyphen&#46;xyz",
+  text: "ahmed&#64;asterhyphen&#46;xyz",
+};
