@@ -1,20 +1,16 @@
 export default function Section({
-  index,
   title,
   children,
 }: {
-  index: number;
+  index?: number;
   title?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section
-      className="section"
-      style={{ animationDelay: `${index * 0.2}s` }}
-    >
+    <section className="section">
       {title && (
         <p className="command">
-          <span className="yellow">&gt; {title}</span>
+          <span className="yellow">{title}</span>
         </p>
       )}
       <div className="content">{children}</div>

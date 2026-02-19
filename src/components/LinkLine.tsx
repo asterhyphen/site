@@ -11,7 +11,6 @@ export default function LinkLine({
 
   return (
     <p className="line">
-      ▶{" "}
       {isExternal ? (
         <a href={href} target="_blank" rel="noopener noreferrer">
           {label}
