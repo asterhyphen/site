@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { autoDecode, runAllDecoders, type DecoderResult } from "../utils/decoder";
 import ctfIcon from "../assets/icons/ctf.png";
+import Footer from "../components/Footer";
 
 export default function CTF() {
   const [input, setInput] = useState("");
@@ -68,6 +69,8 @@ export default function CTF() {
           ))}
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

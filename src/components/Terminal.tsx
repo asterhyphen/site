@@ -2,6 +2,7 @@ import { intro, about, socials } from "../data/content";
 import TerminalHeader from "./TerminalHeader";
 import Section from "./Section";
 import Line from "./Line";
+import Footer from "./Footer";
 
 function decodeEntities(value: string) {
   return value
@@ -94,11 +95,7 @@ export default function Terminal() {
         </div>
       </Section>
 
-      <footer className="footer">
-        <p className="line dim">
-          # Made with ❤️ by Ahmed.-
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

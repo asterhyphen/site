@@ -87,7 +87,7 @@ html {
 
 .top-nav {
   position: sticky;
-  top: 10px;
+  top: 8px;
   z-index: 3;
   width: min(92%, 1100px);
   margin: 0 auto 18px;
@@ -101,11 +101,13 @@ html {
 }
 
 .nav-link {
+  flex: 1;
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 6px 12px;
   font-weight: 700;
   letter-spacing: 0.4px;
+  text-align: center;
 }
 
 .nav-link.active {
@@ -227,8 +229,10 @@ html {
 
   .top-nav {
     top: 6px;
-    width: 100%;
+    width: min(94%, 1100px);
     margin-bottom: 14px;
+    padding: 6px;
+    gap: 6px;
   }
 
   .terminal {
@@ -369,18 +373,6 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.project-group + .project-group {
-  margin-top: 24px;
-}
-
-.project-group-title {
-  margin: 0 0 12px;
-  color: #ffff00;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
 }
 
 .project-item {
