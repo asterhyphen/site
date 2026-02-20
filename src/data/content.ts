@@ -20,11 +20,8 @@ export const intro = [
 ];
 
 export const about = [
-  "I'm Ahmed.-",
   "Sophomore pursuing Information Science and Engineering",
   "Bugs > Features",
-  "Poems > Assignments",
-  "Pani Puri > Health",
   "Sleep > Exercise",
 ];
 
