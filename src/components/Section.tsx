@@ -1,4 +1,7 @@
+import { useRef, useEffect, useState } from "react";
+
 export default function Section({
+  index = 0,
   title,
   children,
 }: {
@@ -6,12 +9,39 @@ export default function Section({
   title?: string;
   children: React.ReactNode;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const regionId = title ? `section-${index}` : undefined;
+
   return (
-    <section className="section">
+    <section
+      ref={ref}
+      id={regionId}
+      aria-labelledby={title ? `${regionId}-title` : undefined}
+      role="region"
+      className={`section fade-in-section${visible ? " is-visible" : ""}`}
+    >
       {title && (
-        <p className="command">
+        <h2 id={`${regionId}-title`} className="command">
           <span className="yellow">{title}</span>
-        </p>
+        </h2>
       )}
       <div className="content">{children}</div>
     </section>

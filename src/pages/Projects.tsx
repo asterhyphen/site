@@ -10,7 +10,13 @@ const projectGroups = [
   { key: "college-projects", title: "College Projects" },
 ] as const;
 
+import { useEffect } from "react";
+
 export default function Projects() {
+  useEffect(() => {
+    document.title = "Projects";
+  }, []);
+
   return (
     <div className="terminal no-animations">
       <TerminalHeader />
@@ -25,25 +31,41 @@ export default function Projects() {
               {items.map((project, i) => {
                 const isExternal = /^https?:\/\//.test(project.href);
 
+                // make whole article clickable for better tap/click UX
+                const Wrapper: React.ComponentType<{children: React.ReactNode}> =
+                  isExternal
+                    ? ({ children }) => (
+                        <a
+                          href={project.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                        >
+                          {children}
+                        </a>
+                      )
+                    : ({ children }) => (
+                        <Link to={project.href} className="project-link">
+                          {children}
+                        </Link>
+                      );
+
                 return (
                   <article key={`${group.key}-${i}`} className="project-item">
-                    <img
-                      className="project-icon"
-                      src={project.icon}
-                      alt={`${project.label} placeholder`}
-                    />
-                    <div className="project-copy">
-                      <p className="line project-title">
-                        {isExternal ? (
-                          <a href={project.href} target="_blank" rel="noopener noreferrer">
-                            {project.label}
-                          </a>
-                        ) : (
-                          <Link to={project.href}>{project.label}</Link>
-                        )}
-                      </p>
-                      <p className="project-description">{project.description}</p>
-                    </div>
+                    <Wrapper>
+                      <img
+                        className="project-icon"
+                        src={project.icon}
+                        alt={`${project.label} icon`}
+                        loading="lazy"
+                      />
+                      <div className="project-copy">
+                        <p className="line project-title" title={project.label}>{project.label}</p>
+                        <p className="project-description">
+                          {project.description}
+                        </p>
+                      </div>
+                    </Wrapper>
                   </article>
                 );
               })}

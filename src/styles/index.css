@@ -30,6 +30,33 @@ html {
   scroll-behavior: smooth;
 }
 
+/* skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #00ff00;
+  padding: 8px 12px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* focus rings for accessibility */
+a:focus,
+button:focus,
+.nav-link:focus,
+.social-icon-link:focus,
+.controls button:focus {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}
+
 /* Scroll margin for elements with IDs */
 [id] {
   scroll-margin-top: 80px;
@@ -61,6 +88,14 @@ html {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  a,
+  .nav-link,
+  .social-icon-link,
+  .controls button,
+  .project-item,
+  .project-link {
+    transition: none !important;
   }
 }
 
@@ -332,6 +367,10 @@ textarea {
   font-size: 15px;
   border-radius: 6px;
 }
+textarea::placeholder {
+  color: #5aff5a;
+  opacity: 1;
+}
 
 .controls {
   display: flex;
@@ -364,9 +403,26 @@ textarea {
   overflow: visible;
 }
 
-.social-icon-link:hover {
+.social-icon-link:hover,
+.social-icon-link:focus-visible {
   color: #ffff00;
   text-shadow: none;
+  transform: scale(1.1);
+}
+
+/* respect reduced motion preference for hover transforms */
+@media (prefers-reduced-motion: reduce) {
+  .social-icon-link:hover,
+  .social-icon-link:focus-visible,
+  .project-item:hover,
+  .project-link:hover {
+    transform: none;
+  }
+}
+
+.project-item:hover,
+.project-link:hover {
+  background: rgba(0, 255, 0, 0.05);
 }
 
 .project-list {
@@ -379,6 +435,26 @@ textarea {
   display: flex;
   gap: 14px;
   align-items: flex-start;
+  flex-wrap: wrap; /* allow wrapping on very narrow screens */
+}
+
+.project-link {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  width: 100%;
+  color: inherit; /* keep terminal green text */
+  text-decoration: none;
+  padding: 8px;
+}
+.project-link:hover .project-title,
+.project-link:focus-visible .project-title {
+  color: #ffff00;
+}
+
+.project-link:focus,
+.project-link:hover {
+  text-decoration: none;
 }
 
 .project-icon {
@@ -396,19 +472,31 @@ textarea {
 
 .project-title {
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-description {
   margin-top: 4px;
-  color: #9bd39b;
+  /* increase contrast against dark background */
+  color: #b2f2b2;
   font-size: 0.92rem;
   line-height: 1.55;
 }
 
+/* ensure tap targets are at least 44x44 */
+.project-link,
+.controls button,
+.nav-link {
+  min-height: 44px;
+  padding: 10px 16px;
+}
+
 .controls button {
-  background: rgba(0, 255, 0, 0.15);
+  background: rgba(0, 255, 0, 0.20);
   color: #00ff00;
-  border: 1px solid rgba(0, 255, 0, 0.25);
+  border: 1px solid rgba(0, 255, 0, 0.60);
   padding: 8px 14px;
   border-radius: 6px;
   font-weight: bold;
@@ -496,6 +584,80 @@ textarea {
   width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+/* =========================================
+   Improvements for accessibility & UX
+   ========================================= */
+
+/* make skip link slide into view when focused */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  background: #000;
+  color: #00ff00;
+  padding: 8px 12px;
+  z-index: 100;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 8px;
+}
+
+/* focus-visible outline for keyboard users */
+:focus-visible {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}
+
+/* ensure interactive elements feel clickable */
+a,
+.nav-link,
+.social-icon-link,
+.controls button {
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link:hover,
+.social-icon-link:hover {
+  background: rgba(0, 255, 0, 0.18);
+}
+
+.controls button {
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+/* soften section look and add hover darkening */
+.section {
+  border: 1px solid rgba(0, 255, 0, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.section:hover {
+  border-color: rgba(0, 255, 0, 0.22);
+  background: rgba(0, 0, 0, 0.30);
+}
+
+/* slightly darker terminal background to separate from page */
+.terminal {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+/* project items highlight on hover */
+.project-item {
+  transition: background 0.2s ease;
+}
+.project-item:hover {
+  background: rgba(0, 255, 0, 0.05);
+}
+.project-item a {
+  cursor: pointer;
 }
 
 .rs-steps-horizontal .rs-steps-item-content {

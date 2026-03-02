@@ -3,6 +3,7 @@ import TerminalHeader from "./TerminalHeader";
 import Section from "./Section";
 import Line from "./Line";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 function decodeEntities(value: string) {
   return value
@@ -61,6 +62,10 @@ function SocialIcon({ type }: { type: "linkedin" | "github" | "instagram" | "ema
 }
 
 export default function Terminal() {
+  useEffect(() => {
+    document.title = "Ahmed.-";
+  }, []);
+
   return (
     <div className="terminal">
       <TerminalHeader />
