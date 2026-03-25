@@ -67,36 +67,44 @@ export default function Terminal() {
   }, []);
 
   return (
-    <div className="terminal">
+    <div className="terminal home-terminal">
       <TerminalHeader />
 
-      <Section index={0}>
-        {intro.map((i, idx) => (
-          <Line key={idx}>{i.text}</Line>
-        ))}
+      <Section index={0} className="hero-section">
+        <div className="hero-copy">
+          <div className="status-chip">Portfolio online</div>
+          {intro.map((i, idx) => (
+            <Line key={idx}>{i.text}</Line>
+          ))}
+        </div>
       </Section>
 
       <Section index={1} title="about">
-        {about.map((l, i) => (
-          <Line key={i}>{l}</Line>
-        ))}
+        <div className="stacked-lines">
+          {about.map((l, i) => (
+            <Line key={i}>{l}</Line>
+          ))}
+        </div>
       </Section>
 
       <Section index={2} title="socials">
-        <div className="social-icons">
-        {socials.map((s, i) => (
-          <a
-            key={i}
-            className="social-icon-link"
-            href={decodeEntities(s.href)}
-            aria-label={s.label}
-            title={s.label}
-            target={s.icon === "email" ? undefined : "_blank"}
-            rel={s.icon === "email" ? undefined : "noopener noreferrer"}
-          >
-            <SocialIcon type={s.icon} />
-          </a>
-        ))}
+        <div className="social-grid">
+          {socials.map((s, i) => (
+            <a
+              key={i}
+              className="social-icon-link"
+              href={decodeEntities(s.href)}
+              aria-label={s.label}
+              title={s.label}
+              target={s.icon === "email" ? undefined : "_blank"}
+              rel={s.icon === "email" ? undefined : "noopener noreferrer"}
+            >
+              <span className="social-icon">
+                <SocialIcon type={s.icon} />
+              </span>
+              <span className="social-label">{s.label}</span>
+            </a>
+          ))}
         </div>
       </Section>
 

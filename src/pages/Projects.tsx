@@ -1,3 +1,4 @@
+import type { ComponentType, ReactNode } from "react";
 import { projects } from "../data/content";
 import TerminalHeader from "../components/TerminalHeader";
 import Section from "../components/Section";
@@ -21,18 +22,22 @@ export default function Projects() {
     <div className="terminal no-animations">
       <TerminalHeader />
 
+      <section className="page-intro fade-in-section is-visible" aria-label="Projects overview">
+        <p className="line">A focused collection of apps, tools, and college builds.</p>
+      </section>
+
       {projectGroups.map((group, sectionIndex) => {
         const items = projects.filter((project) => project.category === group.key);
         if (!items.length) return null;
 
         return (
-          <Section key={group.key} index={sectionIndex} title={group.title}>
+          <Section key={group.key} index={sectionIndex} title={group.title} className="project-section">
             <div className="project-list">
               {items.map((project, i) => {
                 const isExternal = /^https?:\/\//.test(project.href);
 
                 // make whole article clickable for better tap/click UX
-                const Wrapper: React.ComponentType<{children: React.ReactNode}> =
+                const Wrapper: ComponentType<{ children: ReactNode }> =
                   isExternal
                     ? ({ children }) => (
                         <a
