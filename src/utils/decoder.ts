@@ -1,26 +1,62 @@
 export type DecoderResult = { name: string; output: string };
 
+function isValidOutput(str: string): boolean {
+  // Check if output is printable UTF-8 or ASCII
+  try {
+    // Allow printable chars, whitespace, and common punctuation
+    return /^[\x20-\x7E\n\r\t]*$/.test(str) || !str.includes('\ufffd');
+  } catch {
+    return false;
+  }
+}
+
+function scoreEncoding(name: string, output: string, input: string): number {
+  let score = 0;
+  
+  // Bonus if output is valid text
+  if (isValidOutput(output)) score += 10;
+  
+  // Bonus if output length makes sense (not too short, not identical)
+  if (output.length > 2 && output.length !== input.length) score += 5;
+  
+  // Bonus for specific patterns
+  if ((name === "Base64" || name === "Hex") && output.length > 8) score += 3;
+  if (name === "ROT13" && output !== input) score += 2;
+  
+  return score;
+}
+
 export function autoDecode(input: string): DecoderResult {
   const t = input.trim();
+  const attempts: DecoderResult[] = [];
 
-  if (/^[A-Za-z0-9+/]+={0,2}$/.test(t.replace(/\s+/g, "")) && t.replace(/\s+/g, "").length % 4 === 0) {
-    try { return { name: "Base64", output: decodeBase64(t) }; } catch {}
+  // Priority order for CTF common encodings
+  const decoders: Array<[string, (s: string) => string]> = [
+    ["Hex", decodeHex],
+    ["Base64", decodeBase64],
+    ["Binary", decodeBinary],
+    ["URL decode", decodeUrl],
+    ["ROT13", decodeRot13],
+    ["HTML entities", decodeHtmlEntities],
+    ["ASCII codes", decodeAsciiCodes],
+  ];
+
+  for (const [name, fn] of decoders) {
+    try {
+      const output = fn(t);
+      if (isValidOutput(output) && output.length > 1) {
+        attempts.push({ name, output, score: scoreEncoding(name, output, t) });
+      }
+    } catch {
+      // Try next decoder
+    }
   }
 
-  if (/^[0-9a-fA-F\s:]+$/.test(t) && t.replace(/\s|:/g, "").length % 2 === 0) {
-    try { return { name: "Hex", output: decodeHex(t) }; } catch {}
-  }
-
-  if (/^[01\s]+$/.test(t)) {
-    try { return { name: "Binary", output: decodeBinary(t) }; } catch {}
-  }
-
-  if (/%[0-9A-Fa-f]{2}/.test(t) || /\+/.test(t)) {
-    try { return { name: "URL decode", output: decodeUrl(t) }; } catch {}
-  }
-
-  if (/&[a-zA-Z0-9#]+;/.test(t)) {
-    try { return { name: "HTML entities", output: decodeHtmlEntities(t) }; } catch {}
+  // Sort by score and return best match
+  if (attempts.length > 0) {
+    attempts.sort((a, b) => (b as any).score - (a as any).score);
+    const best = attempts[0];
+    return { name: best.name, output: best.output };
   }
 
   return { name: "Multiple (see below)", output: "Ran multiple decoders — inspect panels below." };
@@ -88,15 +124,6 @@ export function decodeRot13(input: string) {
     const base = c <= "Z" ? 65 : 97;
     return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
   });
-}
-
-export function decodeBase32(input: string) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-  const s = input.replace(/=+$/, "").replace(/[^A-Z2-7]/gi, "").toUpperCase();
-  let bits = "";
-  for (const c of s) bits += alphabet.indexOf(c).toString(2).padStart(5, "0");
-  const bytes = bits.match(/.{8}/g)?.map(b => parseInt(b, 2)) || [];
-  return new TextDecoder().decode(new Uint8Array(bytes));
 }
 
 export function decodeHtmlEntities(input: string) {
