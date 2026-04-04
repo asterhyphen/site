@@ -40,7 +40,7 @@ export default function CTF() {
 
       <section className="section">
         <p className="command"><span className="yellow">&gt; paste input</span></p>
-        <div className="content">
+        <div className="content single-column">
           <textarea
             autoFocus
             value={input}

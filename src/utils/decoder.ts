@@ -35,7 +35,6 @@ export function runAllDecoders(text: string): DecoderResult[] {
     ["URL decode", decodeUrl],
     ["ROT13", decodeRot13],
     ["Caesar (all shifts)", decodeCaesar],
-    ["Base32", decodeBase32],
     ["HTML entities", decodeHtmlEntities],
     ["JSON pretty", decodeJsonPretty],
   ] as const;
