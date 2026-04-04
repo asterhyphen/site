@@ -22,9 +22,7 @@ export default function Projects() {
     <div className="terminal no-animations">
       <TerminalHeader />
 
-      <section className="page-intro fade-in-section is-visible" aria-label="Projects overview">
-        <p className="line">A focused collection of apps, tools, and college builds.</p>
-      </section>
+      
 
       {projectGroups.map((group, sectionIndex) => {
         const items = projects.filter((project) => project.category === group.key);
