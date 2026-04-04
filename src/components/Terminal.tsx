@@ -72,7 +72,7 @@ export default function Terminal() {
 
       <Section index={0} className="hero-section">
         <div className="hero-copy">
-          <div className="status-chip">Portfolio online</div>
+          <div className="status-chip">All operations functional</div>
           {intro.map((i, idx) => (
             <Line key={idx}>{i.text}</Line>
           ))}
