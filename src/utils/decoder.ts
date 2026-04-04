@@ -1,5 +1,7 @@
 export type DecoderResult = { name: string; output: string };
 
+type ScoredResult = DecoderResult & { score: number };
+
 function isValidOutput(str: string): boolean {
   // Check if output is printable UTF-8 or ASCII
   try {
@@ -28,7 +30,7 @@ function scoreEncoding(name: string, output: string, input: string): number {
 
 export function autoDecode(input: string): DecoderResult {
   const t = input.trim();
-  const attempts: DecoderResult[] = [];
+  const attempts: ScoredResult[] = [];
 
   // Priority order for CTF common encodings
   const decoders: Array<[string, (s: string) => string]> = [
@@ -54,7 +56,7 @@ export function autoDecode(input: string): DecoderResult {
 
   // Sort by score and return best match
   if (attempts.length > 0) {
-    attempts.sort((a, b) => (b as any).score - (a as any).score);
+    attempts.sort((a, b) => b.score - a.score);
     const best = attempts[0];
     return { name: best.name, output: best.output };
   }
