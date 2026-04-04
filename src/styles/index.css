@@ -463,6 +463,37 @@ textarea::placeholder {
   transition: all 0.2s ease;
 }
 
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.label .name {
+  font-weight: bold;
+  flex: 1;
+}
+
+.label button {
+  background: transparent;
+  color: #00ff00;
+  border: 1px solid rgba(0, 255, 0, 0.4);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.label button:hover {
+  color: #ffff00;
+  border-color: rgba(0, 255, 0, 0.8);
+  background: rgba(0, 255, 0, 0.05);
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 14px;

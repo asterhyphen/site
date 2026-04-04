@@ -24,12 +24,12 @@ export default function CTF() {
     setOutputs(auto ? [autoDecode(input)] : runAllDecoders(input));
   }
 
-  const [copied, setCopied] = useState<string | null>(null);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  const handleCopy = (text: string) => {
+  const handleCopy = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
-    setCopied("Copied to clipboard");
-    setTimeout(() => setCopied(null), 1500);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 1500);
   };
 
   return (
@@ -81,7 +81,7 @@ export default function CTF() {
             </button>
           </div>
           <p className="dim" style={{fontSize:'0.85rem', marginTop:'6px'}}>
-            Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to decode quickly
+            Shortcut: <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
           </p>
         </div>
       </section>
@@ -94,13 +94,13 @@ export default function CTF() {
               <div className="label">
                 <div className="name">{o.name}</div>
                 <button
-                  onClick={() => handleCopy(o.output)}
+                  onClick={() => handleCopy(o.output, i)}
                   aria-label={`Copy output of ${o.name}`}
                 >
                   Copy
                 </button>
               </div>
-              {copied && <p className="dim" style={{ fontSize: "0.8rem" }}>{copied}</p>}
+              {copiedIndex === i && <p className="dim" style={{ fontSize: "0.8rem" }}>Copied to clipboard</p>}
               <pre className="result">
                     {
                         o.output.length > 1200
