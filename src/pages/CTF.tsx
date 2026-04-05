@@ -45,7 +45,7 @@ export default function CTF() {
             autoFocus
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Paste text to decrypt / decode"
+            placeholder="Paste text"
             onKeyDown={e => {
               if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
                 e.preventDefault();
