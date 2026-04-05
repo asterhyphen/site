@@ -24,7 +24,7 @@ export type ProjectItem = LinkItem & {
 };
 
 export const intro = [
-  { text: "Connected to Ahmed's portfolio" },
+  { text: "Connected to A5T3R's portfolio" },
 ];
 
 export const about = [
