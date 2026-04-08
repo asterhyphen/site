@@ -14,7 +14,7 @@ export default function NotFound() {
       <TerminalHeader />
       <Section index={0} title="404">
         <p className="line">
-          Oopsies, you weren&rsquo;t supposed to be reach this page, either it is secret or it doesn&rsquo;t exist, either way,
+          Oopsies, you weren&rsquo;t supposed to reach this page, either it is secret or it doesn&rsquo;t exist, either way,
         </p>
         <p className="line">
           <Link to="/">go back to home</Link>
