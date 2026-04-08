@@ -3,6 +3,7 @@ import { projects } from "../data/content";
 import TerminalHeader from "../components/TerminalHeader";
 import Section from "../components/Section";
 import Footer from "../components/Footer";
+import ScrollReveal from "../components/ScrollReveal";
 import { Link } from "react-router-dom";
 
 const projectGroups = [
@@ -29,7 +30,14 @@ export default function Projects() {
         if (!items.length) return null;
 
         return (
-          <Section key={group.key} index={sectionIndex} title={group.title} className="project-section">
+          <Section
+            key={group.key}
+            index={sectionIndex}
+            title={group.title}
+            className="project-section"
+            reveal
+            delay={sectionIndex * 70}
+          >
             <div className="project-list">
               {items.map((project, i) => {
                 const isExternal = /^https?:\/\//.test(project.href);
@@ -54,7 +62,12 @@ export default function Projects() {
                       );
 
                 return (
-                  <article key={`${group.key}-${i}`} className="project-item">
+                  <ScrollReveal
+                    key={`${group.key}-${i}`}
+                    as="article"
+                    className="project-item"
+                    delay={100 + i * 70}
+                  >
                     <Wrapper>
                       <img
                         className="project-icon"
@@ -69,7 +82,7 @@ export default function Projects() {
                         </p>
                       </div>
                     </Wrapper>
-                  </article>
+                  </ScrollReveal>
                 );
               })}
             </div>

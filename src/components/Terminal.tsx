@@ -3,6 +3,7 @@ import TerminalHeader from "./TerminalHeader";
 import Section from "./Section";
 import Line from "./Line";
 import Footer from "./Footer";
+import ScrollReveal from "./ScrollReveal";
 import { useEffect } from "react";
 
 function decodeEntities(value: string) {
@@ -70,29 +71,37 @@ export default function Terminal() {
     <div className="terminal home-terminal">
       <TerminalHeader />
 
-      <Section index={0} className="hero-section">
+      <Section index={0} className="hero-section" reveal>
         <div className="hero-copy">
-          <div className="status-chip">All operations functional</div>
+          <ScrollReveal className="reveal-block" delay={40}>
+            <div className="status-chip">All operations functional</div>
+          </ScrollReveal>
           {intro.map((i, idx) => (
-            <Line key={idx}>{i.text}</Line>
+            <ScrollReveal key={idx} className="reveal-block" delay={120 + idx * 70}>
+              <Line>{i.text}</Line>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
-      <Section index={1} title="about">
+      <Section index={1} title="about" reveal delay={70}>
         <div className="stacked-lines">
           {about.map((l, i) => (
-            <Line key={i}>{l}</Line>
+            <ScrollReveal key={i} className="reveal-block" delay={80 + i * 55}>
+              <Line>{l}</Line>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
-      <Section index={2} title="socials">
+      <Section index={2} title="socials" reveal delay={110}>
         <div className="social-grid">
           {socials.map((s, i) => (
-            <a
+            <ScrollReveal
               key={i}
+              as="a"
               className="social-icon-link"
+              delay={90 + i * 70}
               href={decodeEntities(s.href)}
               aria-label={s.label}
               title={s.label}
@@ -103,7 +112,7 @@ export default function Terminal() {
                 <SocialIcon type={s.icon} />
               </span>
               <span className="social-label">{s.label}</span>
-            </a>
+            </ScrollReveal>
           ))}
         </div>
       </Section>

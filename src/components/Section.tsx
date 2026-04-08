@@ -1,44 +1,31 @@
-import { useRef, useEffect, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Section({
   index = 0,
   title,
   className = "",
+  reveal = false,
+  delay = 0,
   children,
 }: {
   index?: number;
   title?: string;
   className?: string;
+  reveal?: boolean;
+  delay?: number;
   children: React.ReactNode;
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   const regionId = title ? `section-${index}` : undefined;
 
   return (
-    <section
-      ref={ref}
+    <ScrollReveal
+      as="section"
+      disabled={!reveal}
+      delay={delay}
       id={regionId}
       aria-labelledby={title ? `${regionId}-title` : undefined}
       role="region"
-      className={`section fade-in-section${visible ? " is-visible" : ""}${className ? ` ${className}` : ""}`}
+      className={`section${className ? ` ${className}` : ""}`}
     >
       {title && (
         <h2 id={`${regionId}-title`} className="command">
@@ -49,6 +36,6 @@ export default function Section({
         </h2>
       )}
       <div className="content">{children}</div>
-    </section>
+    </ScrollReveal>
   );
 }
