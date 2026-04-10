@@ -5,6 +5,7 @@ import CTF from "./pages/CTF";
 import Letter from "./pages/letter";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
+import AppRedirect from "./pages/AppRedirect";
 import TopNav from "./components/TopNav";
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/ctf" element={<CTF />} />
             <Route path="/letter" element={<Letter />} />
+            <Route path="/app/:slug" element={<AppRedirect />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
