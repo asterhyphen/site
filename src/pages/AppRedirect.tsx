@@ -62,10 +62,10 @@ export default function AppRedirect() {
       <Section index={0} title="App Link Not Found">
         <p className="line">No redirect file matched this app link.</p>
         <p className="line">
-          Add a file in <code>src/pages/app</code> named after the slug and put the destination URL inside it.
+          If this seems to be an issue, report to that idiot (Ahmed).
         </p>
         <p className="line">
-          <Link to="/">go back to home</Link>
+          <Link to="/">Go back to home</Link>
         </p>
       </Section>
       <Footer />

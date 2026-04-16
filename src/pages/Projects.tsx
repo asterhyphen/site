@@ -23,8 +23,6 @@ export default function Projects() {
     <div className="terminal no-animations">
       <TerminalHeader />
 
-      
-
       {projectGroups.map((group, sectionIndex) => {
         const items = projects.filter((project) => project.category === group.key);
         if (!items.length) return null;
