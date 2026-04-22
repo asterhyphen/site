@@ -1,4 +1,3 @@
-import ctfIcon from "../assets/icons/CTF.svg";
 import geocamIcon from "../assets/icons/Geocam.svg";
 import hisaabIcon from "../assets/icons/Hisaab.svg";
 import icqsIcon from "../assets/icons/ICQS.svg";
@@ -40,13 +39,6 @@ export const projects: ProjectItem[] = [
     category: "websites-apps",
     icon: adhkarIcon,
     description: "Add to home screen and recite your adhkars with ease. The site switches between morning adhkars, evening adhkars and sleep adhkars automatically according to the time of the day.",
-  },
-  {
-    label: "CTFriend",
-    href: "/ctf/",
-    category: "tools",
-    icon: ctfIcon,
-    description: "A multi-decoding tool for beginner CTF players (like myself).",
   },
   {
     label: "File Sorter According to Date",
