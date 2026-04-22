@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Terminal from "./components/Terminal";
 import CTF from "./pages/CTF";
 import Letter from "./pages/letter";
+import Writeup from "./pages/writeup";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import AppRedirect from "./pages/AppRedirect";
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/ctf" element={<CTF />} />
             <Route path="/letter" element={<Letter />} />
+            <Route path="/writeup" element={<Writeup />} />
             <Route path="/app/:slug" element={<AppRedirect />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
