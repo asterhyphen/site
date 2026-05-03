@@ -1,0 +1,62 @@
+{
+  "branches": {
+    "IS": {
+      "branch": "Information Science and Engineering",
+      "department": "ISE"
+    },
+    "CS": {
+      "branch": "Computer Science and Engineering",
+      "department": "CSE"
+    },
+    "EC": {
+      "branch": "Electronics and Communication Engineering",
+      "department": "ECE"
+    },
+    "AI": {
+      "branch": "Artificial Intelligence and Machine Learning",
+      "department": "AIML"
+    }
+  },
+  "people": [
+    {
+      "name": "Ahmed Siddiqua",
+      "usnSuffix": "IS008",
+      "aliases": ["ahmed", "ahmed siddiqua", "siddiqua", "as"]
+    },
+    {
+      "name": "Asfan Shanu",
+      "usnSuffix": "CS100",
+      "aliases": ["asfan", "asfan shanu", "shanu", "cs100"]
+    },
+    {
+      "name": "Shameel Mohiuddin",
+      "usnSuffix": "CS147",
+      "aliases": ["shameel", "shameel mohiuddin", "sm"]
+    },
+    {
+      "name": "Abhishek Thothantillaya",
+      "usnSuffix": "IS004",
+      "aliases": ["abhishek", "abhishek thothantillaya", "at"]
+    },
+    {
+      "name": "Dhruv T Shetty",
+      "usnSuffix": "IS047",
+      "aliases": ["dhruv", "dhruv shetty", "ds"]
+    }
+
+  ],
+  "colleges": [
+    {
+      "name": "Yenepoya Institute of Technology",
+      "aliases": ["yit", "yenepoya", "yenepoya institute"]
+    },
+    {
+      "name": "Alva's Institute of Engineering and Technology",
+      "aliases": ["alvas", "alva", "aiet"]
+    },
+    {
+      "name": "NMAM Institute of Technology",
+      "aliases": ["nmamit", "nmam", "nitte"]
+    }
+  ]
+}

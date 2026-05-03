@@ -1,6 +1,10 @@
 plugins = []
 headers = []
 
+[functions]
+
+[functions."*"]
+
 [build]
 publish = "/Volumes/Aster SSD/envdev/site/dist"
 publishOrigin = "ui"
