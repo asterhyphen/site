@@ -1,8 +1,7 @@
 import type { ComponentType, ReactNode } from "react";
 import { projects } from "../data/content";
-import TerminalHeader from "../components/TerminalHeader";
 import Section from "../components/Section";
-import Footer from "../components/Footer";
+import PageContainer from "../components/PageContainer";
 import ScrollReveal from "../components/ScrollReveal";
 import { Link } from "react-router-dom";
 
@@ -20,9 +19,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="terminal no-animations">
-      <TerminalHeader />
-
+    <PageContainer className="no-animations">
       {projectGroups.map((group, sectionIndex) => {
         const items = projects.filter((project) => project.category === group.key);
         if (!items.length) return null;
@@ -87,8 +84,6 @@ export default function Projects() {
           </Section>
         );
       })}
-
-      <Footer />
-    </div>
+    </PageContainer>
   );
 }

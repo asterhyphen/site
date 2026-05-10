@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Footer from "../components/Footer";
+import PageContainer from "../components/PageContainer";
 import Section from "../components/Section";
-import TerminalHeader from "../components/TerminalHeader";
 
 const appFiles = import.meta.glob("./app/*", {
   eager: true,
@@ -43,22 +42,19 @@ export default function AppRedirect() {
 
   if (targetUrl) {
     return (
-      <div className="terminal no-animations">
-        <TerminalHeader />
+      <PageContainer className="no-animations">
         <Section index={0} title="Redirecting">
           <p className="line">Taking you to {targetUrl}</p>
           <p className="line">
             If nothing happens, <a href={targetUrl}>open the link manually</a>.
           </p>
         </Section>
-        <Footer />
-      </div>
+      </PageContainer>
     );
   }
 
   return (
-    <div className="terminal no-animations">
-      <TerminalHeader />
+    <PageContainer className="no-animations">
       <Section index={0} title="App Link Not Found">
         <p className="line">No redirect file matched this app link.</p>
         <p className="line">
@@ -68,7 +64,6 @@ export default function AppRedirect() {
           <Link to="/">Go back to home</Link>
         </p>
       </Section>
-      <Footer />
-    </div>
+    </PageContainer>
   );
 }

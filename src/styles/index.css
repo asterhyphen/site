@@ -121,7 +121,31 @@ button:focus,
     transparent 2px
   );
   z-index: 1;
-  opacity: 0.45;
+  opacity: 0.65;
+}
+
+.overlay.scanlines::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(199, 217, 76, 0.06) 50%,
+    rgba(199, 217, 76, 0.06)
+  );
+  background-size: 100% 4px;
+  animation: scanline 10s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 .page-shell {
@@ -190,7 +214,7 @@ button:focus,
   color: #f4e76a;
   margin-bottom: 22px;
   letter-spacing: 0.8px;
-  text-shadow: 0 0 14px rgba(244, 231, 106, 0.28);
+  text-shadow: 0 0 10px rgba(244, 231, 106, 0.5), 0 0 20px rgba(199, 217, 76, 0.3);
 }
 
 .prompt {
@@ -218,14 +242,17 @@ button:focus,
   padding: 18px 18px 16px;
   border: 1px solid rgba(199, 217, 76, 0.14);
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(5, 12, 5, 0.76), rgba(3, 8, 3, 0.58));
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  background: linear-gradient(180deg, rgba(5, 12, 5, 0.5), rgba(3, 8, 3, 0.35));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .section:hover {
-  background: linear-gradient(180deg, rgba(6, 14, 6, 0.82), rgba(4, 10, 4, 0.64));
-  border-color: rgba(212, 229, 106, 0.22);
-  transform: translateY(-1px);
+  background: linear-gradient(180deg, rgba(6, 14, 6, 0.6), rgba(4, 10, 4, 0.45));
+  border-color: rgba(212, 229, 106, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(199, 217, 76, 0.05);
 }
 
 .command {
@@ -261,6 +288,25 @@ button:focus,
 
 .line:hover {
   color: #f4e76a;
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #c7d94c;
+  width: 0;
+  animation: typing 1.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #c7d94c; }
 }
 
 .hero-section {
@@ -420,15 +466,18 @@ select:focus {
   padding: 12px;
   border: 1px solid rgba(199, 217, 76, 0.12);
   border-radius: 14px;
-  background: rgba(0, 0, 0, 0.16);
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-link:hover,
 .project-link:focus-visible {
-  border-color: rgba(199, 217, 76, 0.28);
-  background: rgba(199, 217, 76, 0.04);
-  transform: translateY(-1px);
+  border-color: rgba(199, 217, 76, 0.35);
+  background: rgba(199, 217, 76, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 12px rgba(199, 217, 76, 0.1);
 }
 
 .project-link:hover .project-title,

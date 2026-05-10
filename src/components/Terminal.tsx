@@ -1,9 +1,8 @@
 import { intro, about, socials } from "../data/content";
-import TerminalHeader from "./TerminalHeader";
-import Section from "./Section";
 import Line from "./Line";
-import Footer from "./Footer";
 import ScrollReveal from "./ScrollReveal";
+import PageContainer from "./PageContainer";
+import Section from "./Section";
 import { useEffect } from "react";
 
 function decodeEntities(value: string) {
@@ -68,9 +67,7 @@ export default function Terminal() {
   }, []);
 
   return (
-    <div className="terminal home-terminal">
-      <TerminalHeader />
-
+    <PageContainer className="home-terminal">
       <Section index={0} className="hero-section" reveal>
         <div className="hero-copy">
           <ScrollReveal className="reveal-block" delay={40}>
@@ -78,7 +75,7 @@ export default function Terminal() {
           </ScrollReveal>
           {intro.map((i, idx) => (
             <ScrollReveal key={idx} className="reveal-block" delay={120 + idx * 70}>
-              <Line>{i.text}</Line>
+              <Line className="typing-text">{i.text}</Line>
             </ScrollReveal>
           ))}
         </div>
@@ -116,8 +113,6 @@ export default function Terminal() {
           ))}
         </div>
       </Section>
-
-      <Footer />
-    </div>
+    </PageContainer>
   );
 }

@@ -5,7 +5,7 @@ import Letter from "./pages/letter";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import AppRedirect from "./pages/AppRedirect";
-import TopNav from "./components/TopNav";
+import Layout from "./components/Layout";
 
 export default function App() {
   const location = useLocation();
@@ -16,23 +16,14 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
-      <div className="overlay" />
-      <main className="page-shell" role="main">
-        <TopNav />
-        <div id="main-content" className="page-content">
-          <Routes>
-            <Route path="/" element={<Terminal />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/letter" element={<Letter />} />
-            <Route path="/app/:slug" element={<AppRedirect />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </main>
-    </>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Terminal />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/letter" element={<Letter />} />
+        <Route path="/app/:slug" element={<AppRedirect />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
   );
 }

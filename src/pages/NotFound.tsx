@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import Footer from "../components/Footer";
-import TerminalHeader from "../components/TerminalHeader";
+import PageContainer from "../components/PageContainer";
 import Section from "../components/Section";
 
 export default function NotFound() {
@@ -10,8 +9,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <div className="terminal no-animations">
-      <TerminalHeader />
+    <PageContainer className="no-animations">
       <Section index={0} title="404">
         <p className="line">
           Oopsies, you weren&rsquo;t supposed to reach this page, either it is secret or it doesn&rsquo;t exist, either way,
@@ -20,7 +18,6 @@ export default function NotFound() {
           <Link to="/">go back to home</Link>
         </p>
       </Section>
-      <Footer />
-    </div>
+    </PageContainer>
   );
 }
