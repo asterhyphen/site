@@ -28,6 +28,7 @@ export const intro = [
 
 export const about = [
   "Sophomore pursuing Information Science and Engineering",
+  "I code (sometimes)",
   "Bugs > Features",
   "Sleep > Exercise",
 ];
