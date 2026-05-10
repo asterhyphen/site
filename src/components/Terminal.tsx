@@ -75,7 +75,7 @@ export default function Terminal() {
           </ScrollReveal>
           {intro.map((i, idx) => (
             <ScrollReveal key={idx} className="reveal-block" delay={120 + idx * 70}>
-              <Line className="typing-text">{i.text}</Line>
+              <Line>{i.text}</Line>
             </ScrollReveal>
           ))}
         </div>
