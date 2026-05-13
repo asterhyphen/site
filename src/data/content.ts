@@ -23,14 +23,16 @@ export type ProjectItem = LinkItem & {
 };
 
 export const intro = [
-  { text: "Connected to A5T3R's portfolio" },
+  { text: "PORT" },
+  { text: "FOLIO" },
+  { text: "Developer, builder, bug negotiator." },
 ];
 
 export const about = [
   "Sophomore pursuing Information Science and Engineering",
-  "I code (sometimes)",
-  "Bugs > Features",
-  "Sleep > Exercise",
+  "I make small apps, useful tools, and campus survival utilities.",
+  "Currently learning by shipping, breaking, fixing, and shipping again.",
+  "Bugs > Features, because the bugs always introduce themselves first.",
 ];
 
 export const projects: ProjectItem[] = [

@@ -71,27 +71,48 @@ export default function Terminal() {
       <Section index={0} className="hero-section" reveal>
         <div className="hero-copy">
           <ScrollReveal className="reveal-block" delay={40}>
-            <div className="status-chip">All operations functional</div>
+            <div className="status-chip">This is my portfolio</div>
           </ScrollReveal>
           {intro.map((i, idx) => (
             <ScrollReveal key={idx} className="reveal-block" delay={120 + idx * 70}>
               <Line>{i.text}</Line>
             </ScrollReveal>
           ))}
+          <ScrollReveal className="hero-actions" delay={280}>
+            <a href="/projects" className="sketch-button">See work</a>
+            <a href="#section-2" className="sketch-button secondary">Contact</a>
+          </ScrollReveal>
+        </div>
+        <ScrollReveal className="portfolio-sketch" delay={180}>
+          <div className="sketch-note note-top">Let's see what I can do.</div>
+          <div className="sketch-note note-side">Wait until the end.</div>
+          <div className="sketch-face" aria-hidden="true">
+            <span className="hair hair-left" />
+            <span className="hair hair-right" />
+            <span className="eye eye-left" />
+            <span className="eye eye-right" />
+            <span className="mouth" />
+          </div>
+          <div className="sketch-arrow" aria-hidden="true" />
+        </ScrollReveal>
+      </Section>
+
+      <Section index={1} title="about me" className="about-section" reveal delay={70}>
+        <div className="about-card">
+          <div className="profile-badge" aria-hidden="true">
+            <span>A</span>
+          </div>
+          <div className="stacked-lines">
+            {about.map((l, i) => (
+              <ScrollReveal key={i} className="reveal-block" delay={80 + i * 55}>
+                <Line>{l}</Line>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </Section>
 
-      <Section index={1} title="about" reveal delay={70}>
-        <div className="stacked-lines">
-          {about.map((l, i) => (
-            <ScrollReveal key={i} className="reveal-block" delay={80 + i * 55}>
-              <Line>{l}</Line>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section index={2} title="socials" reveal delay={110}>
+      <Section index={2} title="contact me" className="contact-section" reveal delay={110}>
         <div className="social-grid">
           {socials.map((s, i) => (
             <ScrollReveal

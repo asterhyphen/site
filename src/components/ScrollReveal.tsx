@@ -28,11 +28,11 @@ export default function ScrollReveal<T extends ElementType = "div">({
 }: ScrollRevealProps<T>) {
   const Component = (as || "div") as ElementType;
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(disabled);
+  const [visible, setVisible] = useState(false);
+  const isVisible = disabled || visible;
 
   useEffect(() => {
     if (disabled) {
-      setVisible(true);
       return;
     }
 
@@ -56,7 +56,7 @@ export default function ScrollReveal<T extends ElementType = "div">({
   return (
     <Component
       ref={ref}
-      className={`scroll-reveal${visible ? " is-visible" : ""}${className ? ` ${className}` : ""}`}
+      className={`scroll-reveal${isVisible ? " is-visible" : ""}${className ? ` ${className}` : ""}`}
       style={{
         ...style,
         transitionDelay: delay ? `${delay}ms` : undefined,
