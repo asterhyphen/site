@@ -1,8 +1,5 @@
 import { intro, about, socials } from "../data/content";
-import Line from "./Line";
-import ScrollReveal from "./ScrollReveal";
-import PageContainer from "./PageContainer";
-import Section from "./Section";
+import Icon from "../assets/Icon.png";
 import { useEffect } from "react";
 
 function decodeEntities(value: string) {
@@ -12,128 +9,44 @@ function decodeEntities(value: string) {
     .replace(/&#46;/g, ".");
 }
 
-function SocialIcon({ type }: { type: "linkedin" | "github" | "instagram" | "email" }) {
-  if (type === "linkedin") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M6.94 8.5v9.87H3.66V8.5h3.28Zm.2-3.05a1.9 1.9 0 1 1-3.8 0 1.9 1.9 0 0 1 3.8 0Zm13.2 7.26v5.66h-3.26V13.2c0-1.3-.46-2.18-1.63-2.18-.89 0-1.41.6-1.64 1.17-.09.2-.11.48-.11.75v5.43H10.4V8.5h3.12v1.4h.05c.42-.64 1.18-1.55 2.87-1.55 2.1 0 3.68 1.37 3.68 4.36Z"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
-
-  if (type === "instagram") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M16.5 3h-9A4.5 4.5 0 0 0 3 7.5v9A4.5 4.5 0 0 0 7.5 21h9a4.5 4.5 0 0 0 4.5-4.5v-9A4.5 4.5 0 0 0 16.5 3Zm2.9 13.5a2.9 2.9 0 0 1-2.9 2.9h-9a2.9 2.9 0 0 1-2.9-2.9v-9a2.9 2.9 0 0 1 2.9-2.9h9a2.9 2.9 0 0 1 2.9 2.9v9Z"
-          fill="currentColor"
-        />
-        <path
-          d="M12 7.8A4.2 4.2 0 1 0 16.2 12 4.2 4.2 0 0 0 12 7.8Zm0 6.8a2.6 2.6 0 1 1 2.6-2.6A2.6 2.6 0 0 1 12 14.6Z"
-          fill="currentColor"
-        />
-        <circle cx="16.9" cy="7.2" r="1" fill="currentColor" />
-      </svg>
-    );
-  }
-
-  if (type === "email") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M3.5 6.5h17A1.5 1.5 0 0 1 22 8v8a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 16V8a1.5 1.5 0 0 1 1.5-1.5Zm0 1.8v.3l8.5 5.2 8.5-5.2v-.3h-17Zm17 7.4V10l-8.1 5a.7.7 0 0 1-.8 0l-8.1-5v5.7h17Z"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.95-.82-1.14-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.52 7.52 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 8 0Z"
-          fill="currentColor"
-        />
-    </svg>
-  );
-}
-
 export default function Terminal() {
   useEffect(() => {
     document.title = "Ahmed.-";
   }, []);
 
   return (
-    <PageContainer className="home-terminal">
-      <Section index={0} className="hero-section" reveal>
-        <div className="hero-copy">
-          <ScrollReveal className="reveal-block" delay={40}>
-            <div className="status-chip">This is my portfolio</div>
-          </ScrollReveal>
-          {intro.map((i, idx) => (
-            <ScrollReveal key={idx} className="reveal-block" delay={120 + idx * 70}>
-              <Line>{i.text}</Line>
-            </ScrollReveal>
-          ))}
-          <ScrollReveal className="hero-actions" delay={280}>
-            <a href="/projects" className="sketch-button">See work</a>
-            <a href="#section-2" className="sketch-button secondary">Contact</a>
-          </ScrollReveal>
-        </div>
-        <ScrollReveal className="portfolio-sketch" delay={180}>
-          <div className="sketch-note note-top">Let's see what I can do.</div>
-          <div className="sketch-note note-side">Wait until the end.</div>
-          <div className="sketch-face" aria-hidden="true">
-            <span className="hair hair-left" />
-            <span className="hair hair-right" />
-            <span className="eye eye-left" />
-            <span className="eye eye-right" />
-            <span className="mouth" />
-          </div>
-          <div className="sketch-arrow" aria-hidden="true" />
-        </ScrollReveal>
-      </Section>
+    <div className="home-container sketch-border">
+      <img src={Icon} alt="Ahmed's Profile" className="profile-pic" />
+      
+      <div>
+        <h1 className="hero-title">Hey, I'm Ahmed! <span className="prompt">_</span></h1>
+        <h2 className="hero-subtitle">
+          {intro.map(i => i.text).join(' ')}
+        </h2>
+      </div>
 
-      <Section index={1} title="about me" className="about-section" reveal delay={70}>
-        <div className="about-card">
-          <div className="profile-badge" aria-hidden="true">
-            <span>A</span>
-          </div>
-          <div className="stacked-lines">
-            {about.map((l, i) => (
-              <ScrollReveal key={i} className="reveal-block" delay={80 + i * 55}>
-                <Line>{l}</Line>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <Section index={2} title="contact me" className="contact-section" reveal delay={110}>
-        <div className="social-grid">
-          {socials.map((s, i) => (
-            <ScrollReveal
-              key={i}
-              as="a"
-              className="social-icon-link"
-              delay={90 + i * 70}
-              href={decodeEntities(s.href)}
-              aria-label={s.label}
-              title={s.label}
-              target={s.icon === "email" ? undefined : "_blank"}
-              rel={s.icon === "email" ? undefined : "noopener noreferrer"}
-            >
-              <span className="social-icon">
-                <SocialIcon type={s.icon} />
-              </span>
-              <span className="social-label">{s.label}</span>
-            </ScrollReveal>
+      <div style={{ textAlign: "left", width: "100%", maxWidth: "600px", marginTop: "1rem" }}>
+        <h3 className="section-title">About Me</h3>
+        <ul>
+          {about.map((line, idx) => (
+            <li key={idx}>{line}</li>
           ))}
-        </div>
-      </Section>
-    </PageContainer>
+        </ul>
+      </div>
+
+      <div className="social-links">
+        {socials.map((s, idx) => (
+          <a 
+            key={idx} 
+            href={decodeEntities(s.href)}
+            target={s.icon === "email" ? undefined : "_blank"}
+            rel={s.icon === "email" ? undefined : "noopener noreferrer"}
+            className="sketch-border"
+          >
+            {s.label}
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }

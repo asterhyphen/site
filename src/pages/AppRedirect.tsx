@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import PageContainer from "../components/PageContainer";
-import Section from "../components/Section";
 
 const appFiles = import.meta.glob("./app/*", {
   eager: true,
@@ -42,28 +40,23 @@ export default function AppRedirect() {
 
   if (targetUrl) {
     return (
-      <PageContainer className="no-animations">
-        <Section index={0} title="Redirecting">
-          <p className="line">Taking you to {targetUrl}</p>
-          <p className="line">
-            If nothing happens, <a href={targetUrl}>open the link manually</a>.
-          </p>
-        </Section>
-      </PageContainer>
+      <div className="home-container sketch-border" style={{ marginTop: "50px" }}>
+        <h1 className="hero-title">Redirecting...</h1>
+        <p style={{ fontSize: "1.2rem", maxWidth: "400px" }}>Taking you to {targetUrl}</p>
+        <a href={targetUrl} className="sketch-border" style={{ marginTop: "20px", display: "inline-block", padding: "10px 20px" }}>
+          Open link manually
+        </a>
+      </div>
     );
   }
 
   return (
-    <PageContainer className="no-animations">
-      <Section index={0} title="App Link Not Found">
-        <p className="line">No redirect file matched this app link.</p>
-        <p className="line">
-          If this seems to be an issue, report to that idiot (Ahmed).
-        </p>
-        <p className="line">
-          <Link to="/">Go back to home</Link>
-        </p>
-      </Section>
-    </PageContainer>
+    <div className="home-container sketch-border" style={{ marginTop: "50px" }}>
+      <h1 className="hero-title" style={{ color: "var(--accent-color)" }}>App Link Not Found</h1>
+      <p style={{ fontSize: "1.2rem", maxWidth: "400px" }}>No redirect file matched this app link.</p>
+      <Link to="/" className="sketch-border" style={{ marginTop: "20px", display: "inline-block", padding: "10px 20px" }}>
+        Go back to home
+      </Link>
+    </div>
   );
 }

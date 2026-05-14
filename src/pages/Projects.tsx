@@ -1,9 +1,5 @@
-import type { ComponentType, ReactNode } from "react";
 import { projects } from "../data/content";
-import Section from "../components/Section";
-import PageContainer from "../components/PageContainer";
-import ScrollReveal from "../components/ScrollReveal";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const projectGroups = [
   { key: "websites-apps", title: "Websites/Apps" },
@@ -11,79 +7,50 @@ const projectGroups = [
   { key: "college-projects", title: "College Projects" },
 ] as const;
 
-import { useEffect } from "react";
-
 export default function Projects() {
   useEffect(() => {
     document.title = "Projects";
   }, []);
 
   return (
-    <PageContainer className="no-animations">
-      {projectGroups.map((group, sectionIndex) => {
+    <div className="projects-container sketch-border">
+      <h1 className="hero-title" style={{ textAlign: "center", marginBottom: "30px" }}>My Projects</h1>
+      
+      {projectGroups.map((group) => {
         const items = projects.filter((project) => project.category === group.key);
         if (!items.length) return null;
 
         return (
-          <Section
-            key={group.key}
-            index={sectionIndex}
-            title={group.title}
-            className="project-section"
-            reveal
-            delay={sectionIndex * 70}
-          >
-            <div className="project-list">
+          <div key={group.key} style={{ marginBottom: "40px", width: "100%", textAlign: "left" }}>
+            <h2 className="section-title">{group.title}</h2>
+            
+            <div className="projects-grid">
               {items.map((project, i) => {
                 const isExternal = /^https?:\/\//.test(project.href);
 
-                // make whole article clickable for better tap/click UX
-                const Wrapper: ComponentType<{ children: ReactNode }> =
-                  isExternal
-                    ? ({ children }) => (
-                        <a
-                          href={project.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                        >
-                          {children}
-                        </a>
-                      )
-                    : ({ children }) => (
-                        <Link to={project.href} className="project-link">
-                          {children}
-                        </Link>
-                      );
-
                 return (
-                  <ScrollReveal
+                  <a
                     key={`${group.key}-${i}`}
-                    as="article"
-                    className="project-item"
-                    delay={100 + i * 70}
+                    href={project.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="project-card sketch-border"
                   >
-                    <Wrapper>
-                      <img
-                        className="project-icon"
-                        src={project.icon}
-                        alt={`${project.label} icon`}
-                        loading="lazy"
-                      />
-                      <div className="project-copy">
-                        <p className="line project-title" title={project.label}>{project.label}</p>
-                        <p className="project-description">
-                          {project.description}
-                        </p>
-                      </div>
-                    </Wrapper>
-                  </ScrollReveal>
+                    <img
+                      className="project-icon"
+                      src={project.icon}
+                      alt={`${project.label} icon`}
+                      loading="lazy"
+                    />
+                    <div className="project-title" title={project.label}>{project.label}</div>
+                    <div className="project-desc">{project.description}</div>
+                  </a>
                 );
               })}
             </div>
-          </Section>
+          </div>
         );
       })}
-    </PageContainer>
+    </div>
   );
 }
