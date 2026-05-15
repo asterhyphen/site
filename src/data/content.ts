@@ -23,8 +23,6 @@ export type ProjectItem = LinkItem & {
 };
 
 export const intro = [
-  { text: "PORT" },
-  { text: "FOLIO" },
   { text: "Professional Pani Puri Enjoyer" },
 ];
 
@@ -47,7 +45,7 @@ export const projects: ProjectItem[] = [
     href: "https://github.com/asterhyphen/sort",
     category: "tools",
     icon: fileIcon,
-    description: "Program to sort and rename files in a folder according to date of creation.",
+    description: "Sort and rename files in a folder according to date of creation.",
   },
   {
     label: "Hisaab",
