@@ -32,7 +32,6 @@ export const about = [
   "Sophomore pursuing Information Science and Engineering",
   "I read code, I write bugs.",
   "I can't be no ethical hacker, i will try breaking into things and end up breaking things.",
-  "It ain't a bug, it's a feature (just like this website design).",
 ];
 
 export const projects: ProjectItem[] = [
