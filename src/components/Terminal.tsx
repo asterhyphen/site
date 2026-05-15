@@ -19,7 +19,7 @@ export default function Terminal() {
       <img src={Icon} alt="Ahmed's Profile" className="profile-pic" />
       
       <div>
-        <h1 className="hero-title">Hey, I'm Ahmed! <span className="prompt">_</span></h1>
+        <h1 className="hero-title">Hey, I'm Ahmed.- <span className="prompt">_</span></h1>
         <h2 className="hero-subtitle">
           {intro.map(i => i.text).join(' ')}
         </h2>

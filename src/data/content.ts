@@ -45,7 +45,7 @@ export const projects: ProjectItem[] = [
     href: "https://github.com/asterhyphen/sort",
     category: "tools",
     icon: fileIcon,
-    description: "Sort and rename files in a folder according to date of creation.",
+    description: "Sahmort and rename files in a folder according to date of creation.",
   },
   {
     label: "Hisaab",

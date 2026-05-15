@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <span className="pc-btn min"></span>
             <span className="pc-btn max"></span>
           </div>
-          <div className="pc-title">ahmed_portfolio.exe</div>
+          <div className="pc-title">a5t3r.exe</div>
           <div style={{ width: "60px" }}></div> {/* Spacer to center title */}
         </div>
         <div className="app-layout">
