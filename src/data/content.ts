@@ -27,7 +27,7 @@ export const intro = [
 ];
 
 export const about = [
-  "Sophomore pursuing Information Science and Engineering",
+  "Third-year Information Science and Engineering student.",
   "I read code, I write bugs.",
   "I can't be no ethical hacker, i will try breaking into things and end up breaking things.",
 ];
