@@ -40,23 +40,31 @@ export default function AppRedirect() {
 
   if (targetUrl) {
     return (
-      <div className="home-container sketch-border" style={{ marginTop: "50px" }}>
-        <h1 className="hero-title">Redirecting...</h1>
-        <p style={{ fontSize: "1.2rem", maxWidth: "400px" }}>Taking you to {targetUrl}</p>
-        <a href={targetUrl} className="sketch-border" style={{ marginTop: "20px", display: "inline-block", padding: "10px 20px" }}>
-          Open link manually
-        </a>
+      <div className="redirect-page-container">
+        <div className="redirect-card">
+          <div className="section-eyebrow" aria-hidden="true">NAVIGATING // EXTERNAL</div>
+          <h1 className="hero-title">Redirecting...</h1>
+          <p className="redirect-desc">Taking you to {targetUrl}</p>
+          <a href={targetUrl} className="luxury-btn" data-cursor-hover>
+            <span>Open link manually</span>
+            <span className="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="home-container sketch-border" style={{ marginTop: "50px" }}>
-      <h1 className="hero-title" style={{ color: "var(--accent-color)" }}>App Link Not Found</h1>
-      <p style={{ fontSize: "1.2rem", maxWidth: "400px" }}>No redirect file matched this app link.</p>
-      <Link to="/" className="sketch-border" style={{ marginTop: "20px", display: "inline-block", padding: "10px 20px" }}>
-        Go back to home
-      </Link>
+    <div className="redirect-page-container">
+      <div className="redirect-card">
+        <div className="section-eyebrow" aria-hidden="true">ERROR // INVALID ROUTE</div>
+        <h1 className="hero-title">App Link Not Found</h1>
+        <p className="redirect-desc">No redirect file matched this app link.</p>
+        <Link to="/" className="luxury-btn" data-cursor-hover>
+          <span>Go back to home</span>
+          <span className="btn-arrow" aria-hidden="true">→</span>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import geocamIcon from "../assets/icons/Geocam.svg";
 import hisaabIcon from "../assets/icons/Hisaab.svg";
 import icqsIcon from "../assets/icons/ICQS.svg";
 import migraineIcon from "../assets/icons/Migraine Tracker.svg";
-import rentTrackKarIcon from "../assets/icons/Rent Track Kar.svg";
 import adhkarIcon from "../assets/icons/Adhkar.svg";
 import fileIcon from "../assets/icons/File Sorter.svg"
 import facultyIcon from "../assets/icons/Faculty Availability Checker.svg";

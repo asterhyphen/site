@@ -6,24 +6,28 @@ import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import AppRedirect from "./pages/AppRedirect";
 import Layout from "./components/Layout";
+import SmoothScroll from "./components/SmoothScroll";
+import "./App.css";
 
 export default function App() {
   const location = useLocation();
 
-  // scroll to top whenever the pathname changes
+  // Scroll to top whenever the pathname changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Terminal />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/letter" element={<Letter />} />
-        <Route path="/app/:slug" element={<AppRedirect />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+    <SmoothScroll>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Terminal />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/letter" element={<Letter />} />
+          <Route path="/app/:slug" element={<AppRedirect />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </SmoothScroll>
   );
 }
