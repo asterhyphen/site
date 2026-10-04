@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const projectGroups = [
-  { key: "websites-apps", title: "Websites/Apps" },
+  { key: "websites-apps", title: "Apps" },
   { key: "tools", title: "Tools" },
   { key: "college-projects", title: "College Projects" },
 ] as const;
